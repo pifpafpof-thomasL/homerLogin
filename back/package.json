@@ -4,16 +4,18 @@
     "description": "serveur de la Wild",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
-        "nodemon": "nodemon app.js",
-        "es6": "nodemon --exec babel-node app.js"
+        "oldstart": "node app.js",
+        "startNotEs6": "nodemon app.js",
+        "start": "nodemon --exec babel-node app.js"
     },
     "author": "wilder",
     "dependencies": {
+        "bcrypt": "^3.0.4",
         "body-parser": "^1.18.2",
         "express": "^4.16.3",
         "fs": "0.0.1-security",
-        "morgan": "^1.9.0"
+        "morgan": "^1.9.0",
+        "mysql": "^2.16.0"
     },
     "devDependencies": {
         "babel-preset-env": "^1.7.0",

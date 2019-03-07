@@ -1,9 +1,19 @@
 // const express = require('express');
 import express from 'express';
 
+const bodyParser = require('body-parser');
+
 const app = express();
-const birds = require('./routage');
+const birds = require('./birds');
 const auth = require('./routes/auth/auth');
+
+// Support JSON-encoded bodies
+app.use(bodyParser.json());
+// Support URL-encoded bodies
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
 
 app.use('/auth', auth);
 
@@ -13,7 +23,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+const port = 8030;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SignUp from './SignUp';
+import SignInUp from './SignInUp';
 
 class App extends Component {
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <SignUp />
+          <SignInUp />
         </header>
       </div>
     );
