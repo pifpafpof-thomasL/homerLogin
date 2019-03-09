@@ -31,7 +31,11 @@ class SignInUp extends Component {
         })
             .then(res => res.json())
             .then(
-                res => this.setState({ "flash": res.flash }),
+                res => {
+                    this.setState({ "flash": res.flash });
+                    localStorage.setItem ("flash", JSON.stringify(res.flash));
+                    console.log("storage is", JSON.parse(localStorage.getItem ("flash")));
+                },
                 err => this.setState({ "flash": err.flash })
             ).then(
                 () => console.log("flash", this.state.flash)
@@ -43,7 +47,7 @@ class SignInUp extends Component {
             <div>
                 <br />
                 <span> Your Email to sign up: </span>
-                <h5> {JSON.stringify(this.state, 1, 1)} </h5>
+                {/* <h5> {JSON.stringify(this.state, 1, 1)} </h5> */}
                 <br />
                 <input type="email" name="email" onChange={this.onEmailInput} />
                 <input type="password" name="password" onChange={this.onPasswordInput} />
