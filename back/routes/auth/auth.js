@@ -11,7 +11,7 @@ const jwtSecret = 'blablabla';
 // #client registering for the first time
 router.post('/signup', (req, res) => {
   const { body } = req;
-  console.log('Demande /signup reçue', body);
+  console.log('Demande /signup reçue', body.email);
 
   if (!body.password || !body.email) {
     res.status(500).send(`Erreur données login manquantes ${body}`);
@@ -34,11 +34,7 @@ router.post('/signup', (req, res) => {
         } else {
           // Si tout s'est bien passé, on envoie un statut 'ok'.
           console.log(`User ${body.email} added`);
-          // création d'un token
-          const token = jwt.sign({
-            username: body.email
-          }, jwtSecret, { expiresIn: '12h' });
-          res.status(200).send({ flash: 'signup ok', token });
+          res.status(200).send({ flash: 'signup ok' });
         }
         res.end();
       }
@@ -50,7 +46,7 @@ router.post('/signup', (req, res) => {
 router.post('/signin', (req, res) => {
   const { body } = req;
 
-  console.log('/signin request with body ', body);
+  console.log('/signin request with body ', body.email);
   msql.query(`SELECT email, password from employee where \
     email = '${body.email}';`,
   (err, results) => {
@@ -58,8 +54,7 @@ router.post('/signin', (req, res) => {
     if (err) {
       console.log('/sigin Mysql error: ', err.sqlMessage);
       res.status(400).send({ flash: `Erreur MySQL: ${err.sqlMessage}` });
-    }
-    else {
+    } else {
       const hashedPassword = results[0].password;
       // console.log('/signin MysQL results ', hashedPassword, results);
 
@@ -67,10 +62,14 @@ router.post('/signin', (req, res) => {
       console.log('/signin email password matching on MySQL',
         results, isRightPassword);
       if (isRightPassword) {
-        res.send({ flash: 'signin ok' });
-      }
-      else {
-        res.status(403).send({ flash: `Login or Password Error` });
+        // création d'un token
+        const token = jwt.sign({
+          username: body.email
+        }, jwtSecret, { expiresIn: '12h' });
+        res.status(200).send({ flash: 'signin ok', token });
+        // res.send({ flash: 'signin ok' });
+      } else {
+        res.status(403).send({ flash: 'Login or Password Error' });
       }
     }
   });
