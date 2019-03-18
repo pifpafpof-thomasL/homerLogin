@@ -4,42 +4,42 @@
     "description": "serveur de la Wild",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
-        "nodemon": "nodemon app.js",
-        "dev__": "webpack --mode development ./app.js",
-        "build__": "webpack ./app.js"
+     "start": "node app.js",
+     "nodemon": "nodemon app.js",
+     "dev__": "webpack --mode development ./app.js",
+     "build__": "webpack ./app.js"
     },
     "author": "wilder",
     "dependencies": {
-        "body-parser": "^1.18.2",
-        "express": "^4.16.3",
-        "fs": "0.0.1-security",
-        "morgan": "^1.9.0"
+     "body-parser": "^1.18.2",
+     "express": "^4.16.3",
+     "fs": "0.0.1-security",
+     "morgan": "^1.9.0"
     },
     "devDependencies": {
-        "eslint": "^5.15.0",
-        "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-import": "^2.16.0",
-        "webpack": "^4.29.6",
-        "webpack-cli": "^3.2.3"
+     "eslint": "^5.15.0",
+     "eslint-config-airbnb-base": "^13.1.0",
+     "eslint-plugin-import": "^2.16.0",
+     "webpack": "^4.29.6",
+     "webpack-cli": "^3.2.3"
     },
     "eslintConfig": {
-        "extends": "airbnb",
-        "env": {
-            "browser": true,
-            "jest": true,
-            "serviceworker": true
-        },
-        "rules": {
-            "react/jsx-filename-extension": 0,
-            "react/jsx-one-expression-per-line": 0,
-            "react/prefer-stateless-function": 0,
-            "react/no-array-index-key": 0,
-            "no-param-reassign": 0,
-            "no-restricted-globals": 0,
-            "no-console": "off",
-            "comma-dangle": 0,
-            "arrow-parens": 0
-        }
+     "extends": "airbnb",
+     "env": {
+      "browser": true,
+      "jest": true,
+      "serviceworker": true
+     },
+     "rules": {
+      "react/jsx-filename-extension": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "react/prefer-stateless-function": 0,
+      "react/no-array-index-key": 0,
+      "no-param-reassign": 0,
+      "no-restricted-globals": 0,
+      "no-console": "off",
+      "comma-dangle": 0,
+      "arrow-parens": 0
+     }
     }
 }

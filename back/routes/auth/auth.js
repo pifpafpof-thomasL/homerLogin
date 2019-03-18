@@ -76,4 +76,3 @@ router.post('/signin', (req, res) => {
 });
 
 module.exports = { router, jwtSecret };
-// module.exports = router;

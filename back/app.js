@@ -4,25 +4,25 @@ const expressJwt = require('express-jwt');
 const bodyParser = require('body-parser');
 
 const app = express();
-const birds = require('./birds');
+const profile = require('./profile');
 const auth = require('./routes/auth/auth');
 
 
-// Support JSON-encoded bodies
+// To support JSON-encoded bodies
 app.use(bodyParser.json());
-// Support URL-encoded bodies
+// To support URL-encoded bodies
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
 
 app.use(expressJwt({ secret: auth.jwtSecret })
-  // ony thos routes are allowed without JWT token:
-  .unless({ path: ['/', '/auth', '/auth/signin'] }));
+  // only those routes are allowed without JWT token:
+  .unless({ path: ['/', '/auth/signin', '/auth/signup'] }));
 
 app.use('/auth', auth.router);
 
-app.use('/birds', birds);
+app.use('/profile', profile);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

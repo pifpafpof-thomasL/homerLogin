@@ -10,11 +10,11 @@ router.use((req, res, next) => {
 });
 // define the home page route
 router.get('/', (req, res) => {
-  res.send({ message: 'Birds home page' });
+  res.send({ message: 'profile home page' });
 });
 // define the about route
 router.get('/about', (req, res) => {
-  res.send('About birds');
+  res.send('About profile');
 });
 
 module.exports = router;
