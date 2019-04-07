@@ -1,6 +1,7 @@
 # homerLogin
 
 A very simple front/back React app to login / display profile.
+
 It aims to explain the concept to students.
 
 This back is a Rest API coded using node.js express, MySQL, using JWT(JSON Web Token) Authentication.  
